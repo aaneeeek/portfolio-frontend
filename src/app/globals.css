@@ -1,0 +1,62 @@
+@import "@fontsource-variable/bricolage-grotesque";
+@import "@fontsource-variable/dm-sans";
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Palette follows the reference: deep navy surfaces, indigo-to-violet accent. */
+:root {
+  --bg: #f5f6fc;
+  --surface: #ffffff;
+  --surface-2: #ecEEfa;
+  --line: #d9dcf0;
+  --fg: #12143a;
+  --muted: #5d6290;
+  --accent: #5b4ee8;
+  --accent-2: #8b5cf6;
+  --accent-fg: #ffffff;
+  --ok: #0f9d6b;
+  --warn: #b7791f;
+}
+.dark {
+  --bg: #080b1c;
+  --surface: #0e1230;
+  --surface-2: #151a3f;
+  --line: #232a58;
+  --fg: #e8eaf8;
+  --muted: #8f95bd;
+  --accent: #7c6df5;
+  --accent-2: #a78bfa;
+  --accent-fg: #ffffff;
+  --ok: #34d399;
+  --warn: #fbbf24;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-line: var(--line);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-2: var(--accent-2);
+  --color-accent-fg: var(--accent-fg);
+  --color-ok: var(--ok);
+  --color-warn: var(--warn);
+  --font-display: "Bricolage Grotesque Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "DM Sans Variable", ui-sans-serif, system-ui, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--fg); font-family: var(--font-sans); line-height: 1.65; -webkit-font-smoothing: antialiased; }
+h1, h2, h3 { font-family: var(--font-display); letter-spacing: -0.02em; line-height: 1.12; }
+:focus-visible { outline: 2px solid var(--accent-2); outline-offset: 3px; border-radius: 6px; }
+details > summary { list-style: none; cursor: pointer; }
+details > summary::-webkit-details-marker { display: none; }
+details[open] > summary .chev { transform: rotate(180deg); }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; animation: none !important; } }
+
+/* The one orchestrated moment: the hero photo disc settles in. */
+@keyframes disc-in { from { transform: scale(.92); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+.disc-in { animation: disc-in .7s cubic-bezier(.2,.8,.2,1) both; }
